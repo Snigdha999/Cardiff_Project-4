@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title> Directory</title>
+  </head>
+  <body>
+    <div id=directoryDiv></div>
+
+    <h3><a href=/static/0_formAdd.html>Add another(std):</a></h3>
+    <h3><a href=/static/3_AjaxAdd.html>Add another:</a></h3>
+    <h3><a href=/static/4_AjaxDel.html>Delete entry:</a></h3>
+    <h3><a href=/static/2_Summary.html>Summary Page:</a></h3>
+    <h3><a href=/static/Community_CohesionAdd.html>Add Community Cohesion Data:</a></h3>
+    <script>
+      function loadDirectory() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", '/Directory', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              var text = xhttp.responseText;
+              console.log(text);
+              var directory = JSON.parse(text);
+              console.log(directory);
+              document.getElementById("directoryDiv").innerHTML = text;
+            } else {
+              console.error(xhttp.statusText);
+            }
+          }
+        };
+        xhttp.send();
+      }
+      loadDirectory();
+    </script>
+  </body>
+</html>

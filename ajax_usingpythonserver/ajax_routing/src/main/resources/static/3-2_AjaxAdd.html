@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- comment -->
+<html>
+  <head>
+    <title> Add entry </title>
+  </head>
+
+  <body onload="loaded()">
+    <h3> Add a contact</h3>
+
+    <form name='myForm' action='/WeDontWantThis' method='get'>
+      <label>first name:
+        <input type = "text" name = "name"><br>
+      </label>
+      <label>number:
+        <input type = "text" name = "num"><br>
+      </label>
+      <button type = "submit" id='mySubmit'> submit </button>
+    </form>
+    <span id='txt'></span>
+    <h3><a href=/static/1_Directory.html>Back to directory</h3>
+
+
+<!-- Alternate method of intercepting the std form processing -->
+    <script>
+      function loadName(e) {
+        // stop the default actions from the form
+        e.preventDefault();
+        e.stopPropagation();
+        var name = document.forms["myForm"]["name"].value;
+        var num = document.forms["myForm"]["num"].value;
+        params = 'name='+name+'&num='+num;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", '/AddContact', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              console.log(xhttp.responseText);
+              document.getElementById("txt").innerHTML = xhttp.responseText;
+            } else {
+              console.error(xhttp.statusText);
+            }
+          }
+        };
+        xhttp.send(params);
+      }
+
+// attach the event listener to submit button
+      function loaded() {
+        document.getElementById('mySubmit').addEventListener('click',loadName)
+      }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Heart rate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="heartrate_cal.css">
+<script src="heartrate_cal.js"></script>
+
+</head>
+<body>
+    <form name="THR" method="post">
+        <div align="center">
+          <table bordercolor="#606038" width="400" border="2">
+            <caption><font face="Verdana" size="2" color="#000000"><strong>
+            Exercise Heart Rate Calculator</strong></font></caption>
+            <tbody><tr align="middle">
+              <td bordercolor="#606038" align="left" bgcolor="#ffffff" colspan="2">
+              <div align="left">
+                <font face="Verdana"><font size="2" color="#000000">Step 1.&nbsp; 
+                Enter your age: </font><font color="#cc3300">
+                <input size="3" name="age"></font></font></div>
+              </td>
+            </tr>
+            <tr align="middle">
+              <td bordercolor="#606038" align="left" bgcolor="#ffffff" colspan="2">
+              <div align="left">
+                <font face="Verdana"><font size="2" color="#000000">Step 2.&nbsp; 
+                Enter your resting heart rate: </font><font color="#cc3300">
+                <input size="3" name="rhr"></font></font></div>
+              </td>
+            </tr>
+            <tr align="middle">
+              <td bordercolor="#606038" align="left" bgcolor="#ffffff" colspan="2">
+              <div align="left">
+                <font face="Verdana" size="2" color="#000000">Step 3.&nbsp; Click 
+                here...</font><big><font face="Verdana"><font size="2" color="#000000">
+                </font><font color="#cc3300">
+                <input onclick="computeform(this.form)" type="button" value="Calculate" name="Calculate Button"></font><font size="2" color="#000000">
+                </font></font></big><font face="Verdana"><font color="#cc3300">
+                <input onclick="ClearForm(this.form)" type="reset" value="Reset"></font><font size="2" color="#000000">
+                </font></font>
+              </div>
+              </td>
+            </tr>
+          </tbody></table>
+          <p><font face="Verdana" size="2"><br>
+          &nbsp;</font></p></div>
+        <div align="center">
+          <table bordercolor="#808000" width="400" border="2">
+            <tbody><tr align="middle">
+              <td align="left" colspan="2"><font face="Verdana" size="2">
+              <font color="#ffffff"><b><font color="#000000">Estimated maximum 
+              heart rate:</font></b></font> </font><strong><font face="Verdana">
+              <input size="3" name="mhr"><font size="2"> </font></font></strong>
+              </td>
+            </tr>
+          </tbody></table>
+          <p><font face="Verdana" size="2"><br>
+          &nbsp;</font></p></div>
+        <div align="center">
+          <table bordercolor="#808000" height="147" width="400" bgcolor="#ffffff" border="2">
+            <caption><font face="Verdana" size="2" color="#000000"><strong>
+            Target Heart Rate - Old Method</strong></font></caption>
+            <tbody><tr align="middle">
+              <td align="left" height="25"><font face="Verdana"><font size="2">
+              50%&nbsp;&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR50"></font></td>
+              <td align="left" height="25"><font face="Verdana"><font size="2">
+              75%&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR75"></font></td>
+            </tr>
+            <tr align="middle">
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              55%&nbsp;&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR55"></font></td>
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              80%&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR80"></font></td>
+            </tr>
+            <tr align="middle">
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              60%&nbsp;&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR60"></font></td>
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              85%&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR85"></font></td>
+            </tr>
+            <tr align="middle">
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              65%&nbsp;&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR65"></font></td>
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              90%&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR90"></font></td>
+            </tr>
+            <tr align="middle">
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              70%&nbsp;&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR70"></font></td>
+              <td align="left" height="23"><font face="Verdana"><font size="2">
+              95%&nbsp; =&nbsp;&nbsp; </font><input size="3" name="AR95"></font></td>
+            </tr>
+          </tbody></table>
+          <p><font face="Verdana" size="2"><br>
+          <font color="#000000">&nbsp;</font></font></p></div>
+        <div align="center">
+          <table bordercolor="#808000" width="400" bgcolor="#ffffff" border="1">
+            <caption><font face="Verdana" size="2" color="#000000"><strong>
+            Karvonen Formula<br>
+            (Heart Rate Method)</strong></font></caption>
+            <tbody><tr align="middle">
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              50%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="fifty"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              75%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="seventyfive"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+            </tr>
+            <tr align="middle">
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              55%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="fiftyfive"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              80%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="eighty"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+            </tr>
+            <tr align="middle">
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              60%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="sixty"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              85%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="eightyfive"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+            </tr>
+            <tr align="middle">
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              65%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="sixtyfive"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              90%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="ninety"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+            </tr>
+            <tr align="middle">
+              <td align="left"><font face="Verdana" size="2" color="#000000">
+              70%&nbsp;&nbsp; =&nbsp;&nbsp; </font><strong><font face="Verdana">
+              <font color="#cc3300"><input size="3" name="seventy"></font><font size="2" color="#000000">
+              </font></font></strong></td>
+              <td align="left">
+              <div align="left">
+                <font face="Verdana" size="2" color="#000000">95%&nbsp;&nbsp; =&nbsp;&nbsp; </font>
+                <strong><font face="Verdana"><font color="#cc3300">
+                <input size="3" name="ninetyfive"></font><font size="2" color="#000000">
+                </font></font></strong>
+              </div>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </form>
+</body>
+</html> 

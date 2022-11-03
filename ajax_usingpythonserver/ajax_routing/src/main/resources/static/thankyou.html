@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- comment -->
+<html>
+  <head>
+    <title> FormProcessing </title>
+  </head>
+
+  <body >
+    <span id='header'></span>
+    <h3> Thankyou   <span id=name></span> for your subscription.</h3>
+    <span id='footer'></span>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $('#footer').load('/static/footer.html');
+      $('#header').load('/static/header.html');
+      $('#name').load('/customer');
+    });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- comment -->
+<html>
+  <head>
+    <title> FormProcessing </title>
+  </head>
+
+  <body>
+    <h3> Add a contact</h3>
+
+    <form action = "/AddContact" method="post" id = "myForm" onsubmit="return validate()" >
+      <label>first name:
+        <input type = "text" name = "name"><br>
+      </label>
+      <label>num:
+        <input type = "text" name = "num"><br>
+      </label>
+      <button type = "submit"> submit </button>
+    </form>
+
+    <h3><a href=/static/1_Directory.html>Back to directory</h3>
+
+      <script>
+        function validate(e) {
+          console.log("great validation");
+          return true;
+        }
+      </script>
+  </body>
+</html>
